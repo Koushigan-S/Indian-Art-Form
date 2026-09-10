@@ -134,6 +134,64 @@ export default function FusionSection() {
         )}
       </div>
 
+      {/* Student Handcrafted Fusion Artwork Submission ("Done by Koushigan Srinivasan") */}
+      <div className="relative rounded-3xl overflow-hidden bg-parchment-300 border-2 border-gold/50 shadow-2xl mb-16">
+        {/* Archival Artwork Image Container */}
+        <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] max-h-[660px] overflow-hidden bg-[#F6ECD9] flex items-center justify-center p-2 sm:p-5">
+          <img
+            src="/assets/warli_kalamkari_student_fusion.jpg"
+            alt="Hand-drawn Warli and Kalamkari Regional Painting Fusion by Koushigan Srinivasan"
+            className="w-full h-full object-contain object-center rounded-2xl shadow-sm"
+          />
+
+          {/* Top Left Badge */}
+          <div className="absolute top-4 left-4 z-10 px-3 py-1.5 rounded-lg bg-ink-rich/85 backdrop-blur-md border border-gold/40 text-parchment-50 text-[11px] sm:text-xs font-cinzel tracking-wider flex items-center gap-2 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+            <span>ORIGINAL CREATIVE SYNTHESIS • CO2 ACTIVITY</span>
+          </div>
+
+          {/* Top Right "Done by" Badge */}
+          <div className="absolute top-4 right-4 z-10 px-3.5 py-1.5 rounded-lg bg-parchment-50/95 backdrop-blur-md border border-gold/40 text-terracotta text-[11px] sm:text-xs font-cinzel font-bold tracking-wider shadow-sm hidden xs:flex items-center gap-1.5">
+            <span className="text-ink-muted font-sans font-normal text-[10px]">Done by:</span>
+            <span>Koushigan Srinivasan</span>
+          </div>
+        </div>
+
+        {/* Archival Attestation & Caption Dossier */}
+        <div className="p-5 sm:p-7 bg-parchment-50 border-t border-gold/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="space-y-1 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="px-2 py-0.5 rounded bg-terracotta text-parchment-50 font-cinzel text-[10px] font-bold tracking-widest uppercase">
+                CLA-I STUDENT SUBMISSION
+              </span>
+              <span className="text-xs uppercase tracking-wider font-sans font-semibold text-gold-dark">
+                Regional Painting Fusion
+              </span>
+            </div>
+            <h3 className="font-playfair text-xl sm:text-2xl font-bold text-ink-rich">
+              Warli × Kalamkari: Creative Composition
+            </h3>
+            <p className="font-sans text-xs sm:text-sm text-ink-muted leading-relaxed">
+              Original hand-drawn synthesis integrating Warli geometric triangular figures, ritual village life, and celestial solar motifs with Kalamkari circular mandala flora and organic ornamentation.
+            </p>
+          </div>
+
+          <div className="shrink-0 w-full sm:w-auto">
+            <div className="px-5 py-3 rounded-2xl bg-parchment-200/80 border border-gold/40 flex flex-col sm:items-end shadow-sm">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-cinzel text-ink-faint font-semibold">
+                Done by
+              </span>
+              <span className="font-cinzel text-base font-bold text-terracotta tracking-wider">
+                Koushigan Srinivasan
+              </span>
+              <span className="text-xs font-mono font-semibold text-ink-rich">
+                RA2411003012117
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Visual Split Comparative Breakdown: Warli vs Kalamkari */}
       <div className="my-16">
         <div className="text-center mb-12">
