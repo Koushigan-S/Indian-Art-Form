@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Interactive Map of Indian Art</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f7f1e5}header{background:#5c2d12;color:#fff;padding:22px;text-align:center}#map{height:78vh;width:100%}.legend{padding:8px 12px;background:white;border-radius:8px;box-shadow:0 1px 5px #777}.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px}
+</style>
+</head>
+<body>
+<header><h1>Interactive Map: Important Locations in Indian Art History</h1><p>Click each marker to explore the location, art tradition and historical context.</p></header>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map=L.map('map').setView([22.5,79.0],5);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'© OpenStreetMap contributors'}).addTo(map);
+const places=[
+["Ajanta Caves",20.552,75.703,"Maharashtra","Buddhist murals and cave architecture","Ajanta is famous for narrative paintings, sculpture and architecture developed over several centuries."],
+["Ellora Caves",20.026,75.179,"Maharashtra","Rock-cut architecture and sculpture","Ellora brings together Buddhist, Hindu and Jain monuments and demonstrates exceptional rock-cut craftsmanship."],
+["Thanjavur",10.787,79.137,"Tamil Nadu","Chola bronze and temple art","Thanjavur was an important centre of Chola and later South Indian artistic traditions."],
+["Khajuraho",24.831,79.919,"Madhya Pradesh","Temple sculpture","The Khajuraho group is known for richly carved temple surfaces, including divine, human and everyday-life imagery."],
+["Madhubani / Mithila",26.35,86.07,"Bihar","Mithila folk painting","The region is associated with Madhubani painting, known for symbolic motifs, strong outlines and decorative patterns."],
+["Warli region",19.8,73.0,"Maharashtra","Warli painting","Warli visual traditions use geometric forms to portray community life, agriculture, nature and ritual."],
+["Puri",19.813,85.831,"Odisha","Pattachitra painting","Pattachitra is a traditional Odisha painting tradition associated with religious narratives and carefully controlled line work."],
+["Jaipur",26.912,75.787,"Rajasthan","Rajasthani miniature painting","Rajasthan developed distinctive miniature traditions featuring court life, landscapes, devotion and narrative scenes."]
+];
+places.forEach(p=>{
+ let m=L.marker([p[1],p[2]]).addTo(map);
+ m.bindPopup(`<h2>${p[0]}</h2><b>Region:</b> ${p[3]}<br><b>Art tradition:</b> ${p[4]}<p>${p[5]}</p>`);
+});
+const legend=L.control({position:'bottomright'});
+legend.onAdd=()=>{let d=L.DomUtil.create('div','legend');d.innerHTML='<b>How to use</b><br>🔎 Zoom with + / −<br>📍 Click a marker for details';return d};legend.addTo(map);
+</script>
+</body></html>

@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-parchment: #F7F3EB;
+    --color-ink: #191513;
+    --color-terracotta: #C1522E;
+    --color-gold: #C59E4E;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #F7F3EB;
+    color: #191513;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Subtle Museum Paper Grain Texture */
+.bg-grain {
+  background-image: radial-gradient(rgba(45, 38, 34, 0.04) 1px, transparent 0), radial-gradient(rgba(193, 82, 46, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+.bg-linen {
+  background-color: #F7F3EB;
+  background-image: 
+    linear-gradient(90deg, rgba(30, 25, 22, 0.015) 1px, transparent 1px),
+    linear-gradient(rgba(30, 25, 22, 0.015) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #EFE8DC;
+}
+::-webkit-scrollbar-thumb {
+  background: #C59E4E;
+  border-radius: 4px;
+  border: 2px solid #EFE8DC;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C1522E;
+}
+
+/* Ornamental Heritage Borders */
+.border-ornate {
+  border: 1px solid rgba(197, 158, 78, 0.35);
+  position: relative;
+}
+.border-ornate::before,
+.border-ornate::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #C59E4E;
+}
+.border-ornate::before {
+  top: -4px;
+  left: -4px;
+}
+.border-ornate::after {
+  bottom: -4px;
+  right: -4px;
+}
+
+/* Leaflet Parchment Map Styling */
+.parchment-map .leaflet-tile-pane {
+  filter: sepia(35%) contrast(96%) brightness(98%) hue-rotate(-12deg) saturate(85%);
+}
+
+.leaflet-container {
+  background: #EFE8DC !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Custom Terracotta & Gold Pulse Markers */
+.custom-map-marker {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.custom-map-marker .marker-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #C1522E;
+  border: 2px solid #FAF6F0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+  z-index: 2;
+}
+
+.custom-map-marker:hover .marker-dot {
+  transform: scale(1.4);
+  background: #9B391A;
+}
+
+.custom-map-marker.active .marker-dot {
+  background: #C59E4E;
+  transform: scale(1.5);
+  box-shadow: 0 0 12px #C59E4E;
+}
+
+.custom-map-marker .marker-ring {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(193, 82, 46, 0.5);
+  animation: markerPulse 2.5s infinite ease-out;
+  pointer-events: none;
+}
+
+.custom-map-marker.active .marker-ring {
+  border-color: #C59E4E;
+  animation-duration: 1.5s;
+}
+
+@keyframes markerPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* Modal Animations */
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-modal {
+  animation: modalEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

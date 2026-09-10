@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indian Art History — Interactive Timeline</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f7f1e5;color:#2f241b}
+header{padding:32px 20px;text-align:center;background:#7b3f00;color:white}
+header h1{margin:0 0 8px;font-size:34px} header p{margin:0}
+.timeline{max-width:1050px;margin:35px auto;padding:0 20px}
+.card{background:white;border-radius:16px;padding:20px;margin:20px 0;box-shadow:0 5px 18px #0002;display:flex;gap:22px;align-items:center;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px #0003}
+.art{width:160px;height:120px;flex:0 0 160px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.art svg{width:100%;height:100%}.year{font-weight:bold;color:#9b4d00}
+.modal{display:none;position:fixed;inset:0;background:#0009;align-items:center;justify-content:center;padding:20px}
+.modalbox{max-width:700px;background:#fff;border-radius:18px;padding:28px;position:relative;max-height:85vh;overflow:auto}
+.close{position:absolute;right:18px;top:12px;font-size:28px;cursor:pointer}
+.tags span{display:inline-block;background:#f2d4a7;padding:5px 10px;border-radius:20px;margin:3px;font-size:13px}
+footer{text-align:center;padding:25px;color:#654}
+@media(max-width:650px){.card{display:block}.art{width:100%;height:150px;margin-bottom:15px}}
+</style>
+</head>
+<body>
+<header>
+<h1>Indian Art History: An Interactive Timeline</h1>
+<p>Clickable artifacts from major periods of Indian art</p>
+</header>
+<div class="timeline" id="timeline"></div>
+<div class="modal" id="modal"><div class="modalbox">
+<div class="close" onclick="closeModal()">×</div>
+<h2 id="mtitle"></h2><p id="myear"></p><div class="tags" id="mtags"></div>
+<p id="mdesc"></p><h3>Historical Context</h3><p id="mcontext"></p>
+<h3>Why It Matters</h3><p id="mwhy"></p>
+</div></div>
+<footer>CLA-I Assignment • CO1 • Interactive Timeline</footer>
+<script>
+const items=[
+{year:"c. 2500 BCE",title:"Indus Valley — Dancing Girl",type:"Bronze sculpture",desc:"A small bronze figure made using the lost-wax technique, associated with the Indus Valley Civilization.",context:"The Indus cities show sophisticated craft traditions, urban planning and long-distance cultural exchange. Metal casting was already highly developed.",why:"It demonstrates early Indian experimentation with metalworking, human form and expressive posture.",tags:["Indus Valley","Bronze","Sculpture"],
+svg:`<svg viewBox="0 0 160 120"><rect width="160" height="120" fill="#ead8bc"/><circle cx="82" cy="25" r="10" fill="#7a4b28"/><path d="M82 35 C70 52 76 74 82 92 M78 45 L55 62 M86 46 L112 57 M82 91 L65 108 M82 91 L102 108" stroke="#7a4b28" stroke-width="8" fill="none" stroke-linecap="round"/><circle cx="54" cy="64" r="5" fill="#7a4b28"/><circle cx="112" cy="59" r="5" fill="#7a4b28"/></svg>`},
+{year:"c. 2nd century BCE–6th century CE",title:"Ajanta Caves — Murals",type:"Cave painting",desc:"Ajanta is celebrated for narrative Buddhist murals, figures, gestures and rich visual storytelling.",context:"The cave complex developed over several centuries and became an important centre of Buddhist artistic expression in the Deccan.",why:"Ajanta shows how painting could communicate stories, values, emotions and social life.",tags:["Ajanta","Buddhist Art","Murals"],
+svg:`<svg viewBox="0 0 160 120"><rect width="160" height="120" fill="#5b3a29"/><path d="M15 95 Q50 25 95 55 Q125 75 145 20 L145 110 L15 110Z" fill="#c58b55"/><circle cx="82" cy="47" r="16" fill="#d9a56c"/><path d="M58 82 Q82 63 108 82" stroke="#4b2c20" stroke-width="8" fill="none"/><circle cx="76" cy="44" r="2"/><circle cx="89" cy="44" r="2"/></svg>`},
+{year:"9th–13th century",title:"Chola Period — Nataraja",type:"Temple bronze",desc:"The Nataraja image presents Shiva as the cosmic dancer, surrounded by a ring of flames.",context:"South Indian Chola workshops became renowned for sophisticated bronze casting, especially images made for temple ritual and processions.",why:"The sculpture unites religious symbolism, movement, balance and technical mastery.",tags:["Chola","Bronze","Nataraja"],
+svg:`<svg viewBox="0 0 160 120"><rect width="160" height="120" fill="#e7b85c"/><circle cx="80" cy="60" r="48" fill="none" stroke="#9a5a16" stroke-width="6"/><circle cx="80" cy="33" r="9" fill="#7b4217"/><path d="M80 43 L80 82 M80 52 L55 68 M80 52 L106 66 M80 82 L58 101 M80 82 L108 99" stroke="#7b4217" stroke-width="7" stroke-linecap="round"/><circle cx="80" cy="112" r="8" fill="#7b4217"/></svg>`},
+{year:"16th–18th century",title:"Mughal Miniature Painting",type:"Manuscript painting",desc:"Highly detailed court paintings often depict rulers, ceremonies, nature, battles and illustrated manuscripts.",context:"Mughal ateliers blended Persianate traditions with Indian visual practices and developed refined miniature painting techniques.",why:"It is an important example of cultural synthesis and highly controlled visual detail.",tags:["Mughal","Miniature","Manuscripts"],
+svg:`<svg viewBox="0 0 160 120"><rect width="160" height="120" fill="#f0d9a4"/><rect x="22" y="12" width="116" height="96" fill="#fff2cf" stroke="#7c3f18" stroke-width="5"/><circle cx="80" cy="43" r="13" fill="#b9794a"/><path d="M58 82 Q80 58 102 82" fill="#7b4a2b"/><path d="M50 91 Q80 72 110 91" stroke="#2c5b35" stroke-width="8"/></svg>`},
+{year:"18th–19th century",title:"Madhubani / Mithila Painting",type:"Regional folk painting",desc:"Known for bold outlines, symbolic figures, natural motifs and densely filled decorative spaces.",context:"Mithila painting developed as a regional tradition in Bihar and became widely recognized beyond its original domestic and ritual contexts.",why:"It highlights the role of community, ritual, nature and local storytelling in Indian folk art.",tags:["Madhubani","Mithila","Folk Art"],
+svg:`<svg viewBox="0 0 160 120"><rect width="160" height="120" fill="#f6e2a6"/><circle cx="80" cy="60" r="34" fill="none" stroke="#9a3d25" stroke-width="5"/><circle cx="80" cy="60" r="12" fill="none" stroke="#9a3d25" stroke-width="4"/><path d="M80 26 L80 94 M46 60 L114 60 M57 37 L103 83 M103 37 L57 83" stroke="#9a3d25" stroke-width="3"/></svg>`},
+{year:"20th century",title:"Warli Painting",type:"Tribal / folk painting",desc:"Warli art uses simple geometric forms—circles, triangles and lines—to depict people, farming, dance, animals and community life.",context:"Traditionally associated with communities of Maharashtra, Warli painting became a distinctive visual language for everyday and ceremonial life.",why:"It demonstrates how minimal geometry can communicate movement, community and cultural memory.",tags:["Warli","Maharashtra","Folk Art"],
+svg:`<svg viewBox="0 0 160 120"><rect width="160" height="120" fill="#eadbbd"/><circle cx="80" cy="58" r="36" fill="none" stroke="#6e3f22" stroke-width="4"/><circle cx="80" cy="28" r="7" fill="#6e3f22"/><path d="M80 36 L80 67 M80 45 L60 56 M80 45 L100 56 M80 67 L62 91 M80 67 L98 91" stroke="#6e3f22" stroke-width="4" fill="none"/></svg>`}
+];
+const tl=document.getElementById("timeline");
+items.forEach((x,i)=>{
+ const d=document.createElement("div"); d.className="card"; d.innerHTML=`<div class="art">${x.svg}</div><div><div class="year">${x.year}</div><h2>${x.title}</h2><p>${x.type} • <b>Click to explore</b></p><p>${x.desc}</p></div>`;
+ d.onclick=()=>openModal(i); tl.appendChild(d);
+});
+function openModal(i){const x=items[i];document.getElementById("modal").style.display="flex";mtitle.textContent=x.title;myear.textContent=x.year+" • "+x.type;mdesc.textContent=x.desc;mcontext.textContent=x.context;mwhy.textContent=x.why;mtags.innerHTML=x.tags.map(t=>`<span>${t}</span>`).join("")}
+function closeModal(){document.getElementById("modal").style.display="none"}
+window.onclick=e=>{if(e.target===modal)closeModal()}
+</script>
+</body></html>
