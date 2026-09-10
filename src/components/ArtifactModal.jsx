@@ -33,7 +33,7 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10 bg-ink-rich/80 backdrop-blur-md animate-modal"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 md:p-10 bg-ink-rich/80 backdrop-blur-md animate-modal"
       onClick={(e) => {
         // Light dismiss on backdrop click
         if (e.target === e.currentTarget) {
@@ -45,10 +45,13 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
       aria-modal="true"
       aria-labelledby="modal-title"
     >
-      <div className="relative w-full max-w-5xl max-h-[92vh] bg-parchment-100 rounded-2xl shadow-2xl border border-gold/40 flex flex-col overflow-hidden text-ink">
+      <div className="relative w-full max-w-5xl h-[94vh] sm:h-auto sm:max-h-[92vh] bg-parchment-100 rounded-t-3xl sm:rounded-2xl shadow-2xl border-t sm:border border-gold/40 flex flex-col overflow-hidden text-ink">
+        {/* Mobile Drag Indicator Bar */}
+        <div className="w-12 h-1.5 rounded-full bg-ink/20 mx-auto my-2 sm:hidden shrink-0" />
+
         {/* Top Ornate Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-ink/10 bg-parchment-200/80">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-ink/10 bg-parchment-200/80 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
             <span className="px-2.5 py-1 rounded bg-terracotta text-parchment-50 font-cinzel text-[11px] font-bold tracking-widest uppercase">
               {artifact.archiveId}
             </span>
@@ -57,15 +60,15 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
-            {/* Prev / Next Quick Scrub Buttons */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Prev / Next Quick Scrub Buttons with >=44px mobile touch target */}
             <button
               onClick={() => {
                 playSubtleClick();
                 onPrev();
               }}
               data-cursor="PREV"
-              className="p-1.5 rounded-full hover:bg-parchment-300 text-ink-muted hover:text-ink transition-colors"
+              className="min-w-[40px] min-h-[40px] sm:min-w-0 sm:min-h-0 p-2 sm:p-1.5 rounded-full hover:bg-parchment-300 text-ink-muted hover:text-ink transition-colors flex items-center justify-center"
               title="Previous Artifact (Left Arrow)"
               aria-label="Previous Artifact"
             >
@@ -77,7 +80,7 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
                 onNext();
               }}
               data-cursor="NEXT"
-              className="p-1.5 rounded-full hover:bg-parchment-300 text-ink-muted hover:text-ink transition-colors"
+              className="min-w-[40px] min-h-[40px] sm:min-w-0 sm:min-h-0 p-2 sm:p-1.5 rounded-full hover:bg-parchment-300 text-ink-muted hover:text-ink transition-colors flex items-center justify-center"
               title="Next Artifact (Right Arrow)"
               aria-label="Next Artifact"
             >
@@ -86,17 +89,18 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
 
             <div className="w-[1px] h-4 bg-ink/20 mx-1" />
 
-            {/* Close Button */}
+            {/* Prominent Close Button (>=44px touch target on mobile) */}
             <button
               onClick={() => {
                 playSubtleClick();
                 onClose();
               }}
-              className="p-1.5 rounded-full bg-parchment-50 border border-ink/15 text-ink hover:text-terracotta hover:border-terracotta transition-all"
+              className="min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 px-2.5 py-1.5 rounded-full sm:rounded-full bg-parchment-50 border border-ink/15 text-ink hover:text-terracotta hover:border-terracotta transition-all flex items-center justify-center gap-1"
               title="Close (Esc)"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
+              <span className="text-[10px] uppercase font-cinzel font-bold tracking-wider sm:hidden">Close</span>
             </button>
           </div>
         </div>
@@ -195,14 +199,14 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
                 </h2>
               </div>
 
-              {/* Curatorial Tabs */}
-              <div className="flex border-b border-ink/10 my-4 text-xs font-cinzel tracking-wider uppercase">
+              {/* Curatorial Tabs (Touch-friendly & swipeable on mobile) */}
+              <div className="flex border-b border-ink/10 my-4 text-xs font-cinzel tracking-wider uppercase overflow-x-auto no-scrollbar whitespace-nowrap gap-4 sm:gap-6 pb-0.5">
                 <button
                   onClick={() => {
                     playSubtleClick();
                     setActiveTab('overview');
                   }}
-                  className={`pb-2 mr-6 transition-colors relative font-semibold ${
+                  className={`pb-2 transition-colors relative font-semibold shrink-0 min-h-[40px] flex items-center ${
                     activeTab === 'overview'
                       ? 'text-terracotta border-b-2 border-terracotta'
                       : 'text-ink-muted hover:text-ink'
@@ -215,7 +219,7 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
                     playSubtleClick();
                     setActiveTab('context');
                   }}
-                  className={`pb-2 mr-6 transition-colors relative font-semibold ${
+                  className={`pb-2 transition-colors relative font-semibold shrink-0 min-h-[40px] flex items-center ${
                     activeTab === 'context'
                       ? 'text-terracotta border-b-2 border-terracotta'
                       : 'text-ink-muted hover:text-ink'
@@ -228,7 +232,7 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
                     playSubtleClick();
                     setActiveTab('significance');
                   }}
-                  className={`pb-2 transition-colors relative font-semibold ${
+                  className={`pb-2 transition-colors relative font-semibold shrink-0 min-h-[40px] flex items-center ${
                     activeTab === 'significance'
                       ? 'text-terracotta border-b-2 border-terracotta'
                       : 'text-ink-muted hover:text-ink'
@@ -301,20 +305,20 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
             </div>
 
             {/* Modal Bottom Footer Navigation */}
-            <div className="pt-4 border-t border-ink/10 flex items-center justify-between">
+            <div className="pt-4 border-t border-ink/10 flex items-center justify-between shrink-0">
               <button
                 onClick={() => {
                   playSubtleClick();
                   onPrev();
                 }}
                 data-cursor="PREV"
-                className="flex items-center gap-2 text-xs font-cinzel uppercase tracking-wider text-ink-muted hover:text-terracotta transition-colors"
+                className="min-h-[44px] px-3 py-2 rounded-xl bg-parchment-200/60 sm:bg-transparent hover:bg-parchment-200 flex items-center gap-2 text-xs font-cinzel uppercase tracking-wider text-ink-muted hover:text-terracotta transition-colors"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-4 h-4 text-terracotta" />
                 <span>← Previous</span>
               </button>
 
-              <span className="text-[11px] font-sans text-ink-faint tracking-widest">
+              <span className="text-[11px] font-sans text-ink-faint tracking-widest hidden sm:inline">
                 Press ESC to close
               </span>
 
@@ -324,10 +328,10 @@ export default function ArtifactModal({ artifact, isOpen, onClose, onPrev, onNex
                   onNext();
                 }}
                 data-cursor="NEXT"
-                className="flex items-center gap-2 text-xs font-cinzel uppercase tracking-wider text-ink-muted hover:text-terracotta transition-colors"
+                className="min-h-[44px] px-3 py-2 rounded-xl bg-parchment-200/60 sm:bg-transparent hover:bg-parchment-200 flex items-center gap-2 text-xs font-cinzel uppercase tracking-wider text-ink-muted hover:text-terracotta transition-colors"
               >
                 <span>Next →</span>
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-4 h-4 text-terracotta" />
               </button>
             </div>
           </div>

@@ -260,10 +260,10 @@ export default function Loader({ onFinished }) {
         }`}
       >
         {/* Parchment glass backing shield so text stays 100% readable over colorful mandala */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-parchment-100/90 backdrop-blur-md border border-gold/40 shadow-xl flex flex-col items-center">
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-parchment-100/90 backdrop-blur-md border border-gold/40 shadow-xl flex flex-col items-center">
           {/* Sanskrit Cultural Seal */}
           <div
-            className={`mb-3 inline-flex items-center justify-center w-10 h-10 rounded-full border border-gold/60 bg-parchment-50 text-terracotta text-sm font-cinzel transition-all duration-500 shadow-sm ${
+            className={`mb-2 sm:mb-3 inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-gold/60 bg-parchment-50 text-terracotta text-xs sm:text-sm font-cinzel transition-all duration-500 shadow-sm ${
               showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
@@ -272,7 +272,7 @@ export default function Loader({ onFinished }) {
 
           {/* Main Title: KALA (0.3s – 0.8s) */}
           <h1
-            className={`font-cinzel text-6xl sm:text-7xl md:text-8xl font-black tracking-[0.22em] text-ink-rich leading-none transition-all duration-500 ease-out select-none ${
+            className={`font-cinzel text-5xl sm:text-7xl md:text-8xl font-black tracking-[0.16em] sm:tracking-[0.22em] text-ink-rich leading-none transition-all duration-500 ease-out select-none ${
               showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ textShadow: '0 2px 14px rgba(25, 21, 19, 0.1)' }}
@@ -282,7 +282,7 @@ export default function Loader({ onFinished }) {
 
           {/* Subtitle: "A Living Journey Through Indian Art" (0.75s – 1.3s) */}
           <p
-            className={`font-cormorant italic text-2xl sm:text-3xl text-terracotta font-semibold tracking-wide mt-3 transition-all duration-500 ease-out ${
+            className={`font-cormorant italic text-xl sm:text-3xl text-terracotta font-semibold tracking-wide mt-2.5 sm:mt-3 transition-all duration-500 ease-out ${
               showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
             }`}
           >
@@ -291,7 +291,7 @@ export default function Loader({ onFinished }) {
 
           {/* Description: Blur-to-sharp transition (1.2s – 1.8s) */}
           <p
-            className={`font-sans text-xs sm:text-sm text-ink-muted leading-relaxed max-w-md mx-auto mt-3 transition-all duration-500 ease-out ${
+            className={`font-sans text-xs sm:text-sm text-ink-muted leading-relaxed max-w-md mx-auto mt-2 sm:mt-3 transition-all duration-500 ease-out ${
               showDesc ? 'opacity-100 blur-0 translate-y-0' : 'opacity-0 blur-sm translate-y-2'
             }`}
           >
@@ -303,16 +303,16 @@ export default function Loader({ onFinished }) {
       {/* ========================================================================= */}
       {/* BOTTOM SECTION: EDITORIAL LOADING BAR & STUDENT CREDITS (SINGLE LINE)     */}
       {/* ========================================================================= */}
-      <div className="relative z-10 w-full max-w-xl px-4 pb-6 md:pb-8 flex flex-col items-center text-center space-y-3">
+      <div className="relative z-10 w-full max-w-xl px-4 pb-5 md:pb-8 flex flex-col items-center text-center space-y-2.5 sm:space-y-3">
         {/* Loading Indicator: OPENING THE ARCHIVE */}
         <div className="w-full flex flex-col items-center space-y-1.5">
-          <div className="flex items-center justify-between w-56 text-[10px] uppercase font-cinzel tracking-[0.25em] text-ink-faint">
+          <div className="flex items-center justify-between w-52 sm:w-56 text-[10px] uppercase font-cinzel tracking-[0.22em] sm:tracking-[0.25em] text-ink-faint">
             <span>Opening The Archive</span>
             <span className="text-gold font-sans font-semibold text-[9px]">{Math.round(progressPercent)}%</span>
           </div>
 
           {/* Thin Horizontal Progress Line (0% → 100% over exactly 3.0 seconds) */}
-          <div className="w-56 h-[2px] bg-ink/10 rounded-full overflow-hidden relative">
+          <div className="w-52 sm:w-56 h-[2px] bg-ink/10 rounded-full overflow-hidden relative">
             <div
               className="h-full bg-gradient-to-r from-terracotta via-gold to-terracotta transition-all duration-75 ease-linear rounded-full"
               style={{ width: `${progressPercent}%` }}
@@ -322,13 +322,13 @@ export default function Loader({ onFinished }) {
 
         {/* Bottom Student Attribution Credit (EXACTLY SINGLE LINE) */}
         <div
-          className={`transition-all duration-500 ease-out pt-1 w-full flex items-center justify-center ${
+          className={`transition-all duration-500 ease-out pt-0.5 sm:pt-1 w-full flex items-center justify-center ${
             showCredits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
           }`}
         >
-          <p className="font-cinzel text-xs sm:text-sm tracking-[0.18em] font-semibold text-ink-soft whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center">
+          <p className="font-cinzel text-[11px] sm:text-sm tracking-[0.12em] sm:tracking-[0.18em] font-semibold text-ink-soft whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center">
             <span className="text-terracotta font-bold">Koushigan Srinivasan</span>
-            <span className="text-gold mx-2 sm:mx-3">•</span>
+            <span className="text-gold mx-1.5 sm:mx-3">•</span>
             <span className="text-ink-rich font-bold">RA2411003012117</span>
           </p>
         </div>

@@ -25,7 +25,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex flex-col justify-between items-center px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-linen"
+      className="relative min-h-screen w-full flex flex-col justify-between items-center px-4 sm:px-6 md:px-12 pt-24 sm:pt-28 pb-10 sm:pb-12 overflow-hidden bg-linen"
     >
       {/* Subtle Background Paper Grain Texture */}
       <div className="absolute inset-0 bg-grain pointer-events-none opacity-80" />
@@ -40,7 +40,7 @@ export default function Hero() {
         {/* Large Decorative Mandala / Architectural Ring */}
         <svg
           viewBox="0 0 800 800"
-          className="w-[90vw] max-w-[720px] h-auto opacity-[0.14] stroke-ink-rich animate-spin-very-slow"
+          className="w-[88vw] sm:w-[80vw] lg:w-[90vw] max-w-[720px] h-auto opacity-[0.14] stroke-ink-rich animate-spin-very-slow"
           fill="none"
           strokeWidth="1"
         >
@@ -84,24 +84,24 @@ export default function Hero() {
       </div>
 
       {/* Top Header Tag */}
-      <div className="relative z-10 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold/40 bg-parchment-50/80 backdrop-blur-sm text-ink-muted text-xs tracking-[0.25em] uppercase font-sans mb-2">
+      <div className="relative z-10 text-center px-2">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full border border-gold/40 bg-parchment-50/80 backdrop-blur-sm text-ink-muted text-[10px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em] uppercase font-sans mb-2">
           <Sparkles className="w-3 h-3 text-gold" />
-          <span>CLA-I Digital Museum Archive</span>
+          <span>CLA-I Digital Archive</span>
           <span className="text-gold">•</span>
           <span>CO1 & CO2</span>
         </div>
       </div>
 
       {/* Central Editorial Typographic Monument */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl my-auto py-8">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl my-auto py-6 sm:py-8 w-full">
         {/* Sanskrit Root Title */}
-        <div className="text-xs uppercase tracking-[0.4em] font-cinzel text-terracotta mb-3 font-semibold">
+        <div className="text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] font-cinzel text-terracotta mb-2 sm:mb-3 font-semibold px-2">
           कला • Visual Heritage of the Subcontinent
         </div>
 
         {/* Letter-by-letter reveal Title */}
-        <h1 className="font-cinzel text-7xl sm:text-8xl md:text-9xl lg:text-[11rem] font-black tracking-[0.18em] sm:tracking-[0.22em] text-ink-rich flex items-center justify-center drop-shadow-sm leading-none select-none">
+        <h1 className="font-cinzel text-6xl sm:text-8xl md:text-9xl lg:text-[11rem] font-black tracking-[0.14em] sm:tracking-[0.18em] lg:tracking-[0.22em] text-ink-rich flex items-center justify-center drop-shadow-sm leading-none select-none">
           {titleLetters.map((char, index) => (
             <span
               key={index}
@@ -117,25 +117,25 @@ export default function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <div className="mt-6 sm:mt-8 space-y-3">
-          <p className="font-cormorant italic text-2xl sm:text-3xl md:text-4xl text-ink font-normal tracking-wide">
+        <div className="mt-5 sm:mt-8 space-y-2 sm:space-y-3 px-2">
+          <p className="font-cormorant italic text-xl sm:text-3xl md:text-4xl text-ink font-normal tracking-wide">
             “A Living Journey Through Indian Art”
           </p>
-          <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.3em] text-ink-muted max-w-lg mx-auto leading-relaxed">
+          <p className="font-sans text-[11px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] text-ink-muted max-w-lg mx-auto leading-relaxed">
             From ancient bronze to living folk traditions.
           </p>
         </div>
 
         {/* Editorial Subtext Badge */}
-        <div className="mt-8 flex items-center justify-center gap-4 text-xs font-sans text-ink-faint tracking-widest uppercase">
+        <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-sans text-ink-faint tracking-widest uppercase px-2">
           <span>Indus Valley</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+          <span className="w-1.5 h-1.5 rounded-full bg-gold hidden xs:inline" />
           <span>Ajanta</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
+          <span className="w-1.5 h-1.5 rounded-full bg-terracotta hidden xs:inline" />
           <span>Chola</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+          <span className="w-1.5 h-1.5 rounded-full bg-gold hidden xs:inline" />
           <span>Mughal</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
+          <span className="w-1.5 h-1.5 rounded-full bg-terracotta hidden xs:inline" />
           <span>Folk Traditions</span>
         </div>
       </div>

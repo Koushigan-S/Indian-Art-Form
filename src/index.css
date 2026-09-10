@@ -12,12 +12,16 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   body {
     background-color: #F7F3EB;
     color: #191513;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 }
 

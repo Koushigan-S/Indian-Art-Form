@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import { mapLocations } from '../data/mapLocationsData';
 import { playSubtleClick } from '../utils/audio';
-import { MapPin, Navigation, Compass, Sparkles, RotateCcw, ChevronRight, Tag } from 'lucide-react';
+import { MapPin, Navigation, Compass, Sparkles, RotateCcw, ChevronRight, Tag, X } from 'lucide-react';
 
 export default function MapSection() {
   const mapContainerRef = useRef(null);
@@ -10,6 +10,7 @@ export default function MapSection() {
   const markersRef = useRef([]);
   const [selectedLocation, setSelectedLocation] = useState(mapLocations[0]);
   const [activeLocationId, setActiveLocationId] = useState(mapLocations[0].id);
+  const [isMobilePanelOpen, setIsMobilePanelOpen] = useState(false);
 
   // Initialize Leaflet Map
   useEffect(() => {
@@ -25,6 +26,9 @@ export default function MapSection() {
       zoom: initialZoom,
       zoomControl: true,
       scrollWheelZoom: false, // Prevent accidental page scroll hijacking
+      touchZoom: true,
+      dragging: true,
+      tap: true,
     });
 
     // Custom OpenStreetMap Parchment / Sepia Tile Layer
@@ -54,6 +58,7 @@ export default function MapSection() {
       marker.on('click', () => {
         playSubtleClick();
         handleSelectLocation(loc, false);
+        setIsMobilePanelOpen(true);
       });
 
       return { id: loc.id, marker };
@@ -147,9 +152,10 @@ export default function MapSection() {
             onClick={() => {
               playSubtleClick();
               handleSelectLocation(loc, true);
+              setIsMobilePanelOpen(true);
             }}
             data-cursor="FOCUS"
-            className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-sans tracking-wide transition-all border ${
+            className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-sans tracking-wide transition-all border shrink-0 ${
               activeLocationId === loc.id
                 ? 'bg-ink-rich text-parchment-50 border-gold shadow-md font-semibold'
                 : 'bg-parchment-50 text-ink-muted border-ink/10 hover:border-gold hover:text-ink'
@@ -165,10 +171,10 @@ export default function MapSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Leaflet Map Frame (col-span-7 or 8) */}
         <div className="lg:col-span-7 xl:col-span-8 relative rounded-2xl overflow-hidden border border-gold/40 shadow-museum bg-parchment-200">
-          {/* Map Container */}
+          {/* Map Container - 65vh on mobile, 600px on desktop */}
           <div
             ref={mapContainerRef}
-            className="parchment-map w-full h-[520px] sm:h-[600px] z-10"
+            className="parchment-map w-full h-[65vh] min-h-[420px] sm:h-[600px] z-10"
             style={{ width: '100%' }}
           />
 
@@ -182,10 +188,29 @@ export default function MapSection() {
               Click markers to inspect art tradition
             </span>
           </div>
+
+          {/* Mobile Tap-to-Inspect Button over Map when panel is closed */}
+          {!isMobilePanelOpen && (
+            <div className="lg:hidden absolute bottom-4 left-1/2 -translate-x-1/2 z-20 w-[90%] max-w-xs">
+              <button
+                onClick={() => {
+                  playSubtleClick();
+                  setIsMobilePanelOpen(true);
+                }}
+                className="w-full py-2.5 px-4 rounded-full bg-ink-rich/95 backdrop-blur-md text-parchment-50 border border-gold/40 text-xs font-cinzel font-semibold flex items-center justify-between shadow-xl"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
+                  <span>{selectedLocation.name}</span>
+                </div>
+                <span className="text-[10px] uppercase font-sans text-gold">Details →</span>
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Floating Custom Editorial Panel (col-span-5 or 4) */}
-        <div className="lg:col-span-5 xl:col-span-4 w-full">
+        {/* Floating Custom Editorial Panel on Desktop (col-span-5 or 4, LOCKED) */}
+        <div className="hidden lg:block lg:col-span-5 xl:col-span-4 w-full">
           <div className="p-6 sm:p-8 rounded-2xl bg-parchment-50 border border-gold/40 shadow-museum-hover transition-all duration-300 relative overflow-hidden">
             {/* Top Region Badge */}
             <div className="flex items-center justify-between border-b border-ink/10 pb-4 mb-6">
@@ -258,6 +283,87 @@ export default function MapSection() {
           </div>
         </div>
       </div>
+
+      {/* Mobile-Friendly Bottom Sheet Information Panel */}
+      {isMobilePanelOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="lg:hidden fixed inset-0 z-40 bg-ink-rich/40 backdrop-blur-xs"
+            onClick={() => setIsMobilePanelOpen(false)}
+          />
+
+          {/* Slide-up Bottom Sheet */}
+          <div className="lg:hidden fixed inset-x-0 bottom-0 z-50 p-5 bg-parchment-100 rounded-t-3xl border-t-2 border-gold/50 shadow-2xl max-h-[72vh] overflow-y-auto overscroll-contain animate-modal text-ink">
+            {/* Mobile Drag Indicator Bar */}
+            <div className="w-12 h-1.5 rounded-full bg-ink/20 mx-auto mb-4 shrink-0" />
+
+            {/* Top Region Badge & Obvious Close Button */}
+            <div className="flex items-center justify-between border-b border-ink/10 pb-3 mb-4">
+              <div className="flex items-center gap-2 text-xs font-cinzel font-bold text-terracotta tracking-widest uppercase">
+                <MapPin className="w-4 h-4 text-terracotta" />
+                <span>{selectedLocation.region}</span>
+                <span className="text-ink-faint text-[10px]">• {selectedLocation.period}</span>
+              </div>
+
+              <button
+                onClick={() => {
+                  playSubtleClick();
+                  setIsMobilePanelOpen(false);
+                }}
+                className="min-w-[44px] min-h-[44px] px-3 py-1.5 rounded-full bg-parchment-50 border border-ink/15 text-ink hover:text-terracotta flex items-center gap-1 font-cinzel text-xs font-bold shadow-sm"
+                aria-label="Close panel"
+              >
+                <X className="w-4 h-4" />
+                <span>CLOSE</span>
+              </button>
+            </div>
+
+            {/* Location Title & Tradition */}
+            <div className="space-y-2 mb-4">
+              <h3 className="font-playfair text-2xl font-bold text-ink-rich">
+                {selectedLocation.name}
+              </h3>
+              <div className="inline-block px-3 py-1 rounded-md bg-parchment-200 border border-gold/30 text-xs font-cinzel font-semibold text-terracotta">
+                {selectedLocation.tradition}
+              </div>
+            </div>
+
+            {/* Historical Narrative */}
+            <div className="space-y-3 text-xs text-ink-muted font-sans leading-relaxed">
+              <p className="font-serif italic text-sm text-ink-soft">
+                "{selectedLocation.description}"
+              </p>
+              <p className="leading-relaxed">
+                {selectedLocation.extendedDetails}
+              </p>
+            </div>
+
+            {/* Masterpiece Callout Box */}
+            <div className="mt-4 p-3.5 rounded-xl bg-parchment-200/70 border border-ink/10 space-y-1">
+              <span className="text-[10px] uppercase tracking-wider font-cinzel font-bold text-terracotta block">
+                Signature Heritage Site / Artwork
+              </span>
+              <span className="font-sans font-medium text-xs text-ink-rich block">
+                {selectedLocation.keyMasterpiece}
+              </span>
+            </div>
+
+            {/* Location Tag Pills */}
+            <div className="flex flex-wrap gap-1.5 mt-4 pt-4 border-t border-ink/10">
+              {selectedLocation.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-2.5 py-0.5 rounded-full bg-parchment-200 border border-ink/10 text-[10px] font-sans text-ink-muted flex items-center gap-1"
+                >
+                  <Tag className="w-2.5 h-2.5 text-gold" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }

@@ -109,16 +109,31 @@ export default function Navbar({ activeSection }) {
               </span>
             </button>
 
-            {/* Mobile Hamburger Button */}
+            {/* Animated Mobile Hamburger Button (Morphs into an X) */}
             <button
               onClick={() => {
                 playSubtleClick();
                 setMobileMenuOpen(!mobileMenuOpen);
               }}
-              className="md:hidden p-2 rounded-md border border-ink/10 text-ink hover:text-terracotta"
-              aria-label="Open menu"
+              className="md:hidden min-w-[44px] min-h-[44px] w-11 h-11 flex flex-col items-center justify-center gap-1.5 p-2 rounded-xl border border-ink/15 text-ink hover:text-terracotta bg-parchment-50/90 transition-colors focus:outline-none"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <span
+                className={`block h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out origin-center ${
+                  mobileMenuOpen ? 'rotate-45 translate-y-2 bg-terracotta' : ''
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 rounded-full bg-current transition-all duration-200 ease-out ${
+                  mobileMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100'
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out origin-center ${
+                  mobileMenuOpen ? '-rotate-45 -translate-y-2 bg-terracotta' : ''
+                }`}
+              />
             </button>
           </div>
         </div>
@@ -132,14 +147,39 @@ export default function Navbar({ activeSection }) {
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu (Fullscreen Overlay) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-parchment-100/98 backdrop-blur-xl flex flex-col justify-center px-8 md:hidden">
-          <div className="space-y-6">
-            <p className="font-cinzel text-xs tracking-[0.3em] text-terracotta uppercase mb-4">
-              Archive Navigation
+        <div className="fixed inset-0 z-50 bg-parchment-100/98 backdrop-blur-2xl flex flex-col justify-between p-6 sm:p-8 md:hidden animate-modal">
+          {/* Top Brand & Close Bar */}
+          <div className="flex items-center justify-between border-b border-ink/10 pb-4">
+            <div className="flex items-center gap-2">
+              <span className="font-cinzel text-xl font-black tracking-widest text-ink-rich">KALA</span>
+              <span className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">• Archive</span>
+            </div>
+            <button
+              onClick={() => {
+                playSubtleClick();
+                setMobileMenuOpen(false);
+              }}
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-full border border-ink/15 text-ink hover:text-terracotta bg-parchment-50 shadow-sm"
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5 text-terracotta" />
+            </button>
+          </div>
+
+          {/* Navigation Items (TIMELINE, MAP, FUSION, ABOUT) */}
+          <div className="space-y-2 my-auto py-6">
+            <p className="font-cinzel text-[11px] tracking-[0.3em] text-terracotta uppercase mb-4 font-semibold">
+              Exhibition Navigation
             </p>
-            {navLinks.map((link) => (
+            {[
+              { label: 'TIMELINE', href: '#timeline', code: '01', desc: 'Chronological Milestones (CO1)' },
+              { label: 'MAP', href: '#map', code: '02', desc: 'Geographical Traditions (CO1)' },
+              { label: 'FUSION', href: '#fusion', code: '03', desc: 'Warli × Kalamkari Synthesis (CO2)' },
+              { label: 'ABOUT', href: '#introduction', code: '04', desc: 'Curatorial Framework & Philosophy' },
+              { label: 'CABINET', href: '#cabinet', code: '05', desc: 'Archival Vault & Artifact Dossiers' },
+            ].map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -147,17 +187,25 @@ export default function Navbar({ activeSection }) {
                   playSubtleClick();
                   setMobileMenuOpen(false);
                 }}
-                className="block text-2xl font-cinzel tracking-wider text-ink hover:text-terracotta transition-colors"
+                className="flex flex-col py-3 text-ink hover:text-terracotta transition-colors border-b border-ink/5 group"
               >
-                <span className="text-sm font-sans text-gold mr-3">{link.code}</span>
-                {link.label}
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-cinzel font-bold tracking-wider group-hover:translate-x-1 transition-transform">
+                    {link.label}
+                  </span>
+                  <span className="text-xs font-sans font-bold text-gold">{link.code}</span>
+                </div>
+                <span className="text-[11px] font-sans text-ink-faint mt-0.5">{link.desc}</span>
               </a>
             ))}
           </div>
 
-          <div className="mt-12 pt-6 border-t border-ink/10 text-xs text-ink-muted">
-            <p className="font-cormorant italic text-sm">CLA-I • Indian Art History Archive</p>
-            <p className="mt-1 text-[11px] text-ink-faint">CO1 & CO2 Interactive Showcase</p>
+          {/* Bottom Attribution Footer */}
+          <div className="pt-4 border-t border-ink/10 text-xs text-ink-muted flex flex-col space-y-1">
+            <p className="font-cormorant italic text-sm text-ink-soft">CLA-I • Indian Art History Archive</p>
+            <p className="text-[11px] text-terracotta font-cinzel font-semibold tracking-wider">
+              Koushigan Srinivasan • RA2411003012117
+            </p>
           </div>
         </div>
       )}

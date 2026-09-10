@@ -58,10 +58,13 @@ export default function TimelineSection({ onSelectArtifact }) {
 
       {/* Vertical Central Spine & Timeline Cards */}
       <div className="relative">
-        {/* Central Spine Line on desktop */}
+        {/* Central Spine Line on desktop (LOCKED) */}
         <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-[2px] bg-gradient-to-b from-terracotta via-gold to-heritage-indigo opacity-30" />
 
-        <div className="space-y-12 sm:space-y-16">
+        {/* Vertical Line on Mobile / Tablet (Left-aligned) */}
+        <div className="block lg:hidden absolute left-3 sm:left-5 top-4 bottom-4 w-[2px] bg-gradient-to-b from-terracotta via-gold to-heritage-indigo opacity-35" />
+
+        <div className="space-y-10 sm:space-y-16">
           {filteredArtifacts.map((item, index) => {
             const isEven = index % 2 === 0;
 
@@ -72,23 +75,28 @@ export default function TimelineSection({ onSelectArtifact }) {
                   isEven ? 'lg:flex-row-reverse' : ''
                 }`}
               >
-                {/* Center Node Marker on Spine */}
+                {/* Center Node Marker on Spine (Desktop LOCKED) */}
                 <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center justify-center w-8 h-8 rounded-full bg-parchment-100 border-2 border-gold text-terracotta shadow-md z-10">
                   <div className="w-2.5 h-2.5 rounded-full bg-terracotta animate-pulse" />
                 </div>
 
-                {/* Timeline Card */}
-                <div className="w-full lg:w-[calc(50%-40px)]">
+                {/* Mobile Node Marker on Left Vertical Spine */}
+                <div className="flex lg:hidden absolute left-3 sm:left-5 -translate-x-1/2 top-7 items-center justify-center w-5 h-5 rounded-full bg-parchment-100 border-2 border-gold text-terracotta shadow-sm z-10">
+                  <div className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
+                </div>
+
+                {/* Timeline Card Container */}
+                <div className="w-full pl-7 sm:pl-11 lg:pl-0 lg:w-[calc(50%-40px)]">
                   <div
                     onClick={() => {
                       playSubtleClick();
                       onSelectArtifact(item);
                     }}
                     data-cursor="OPEN"
-                    className="group relative p-6 sm:p-7 rounded-2xl bg-parchment-50 border border-ink/10 hover:border-gold hover:shadow-museum-hover transition-all duration-300 cursor-pointer overflow-hidden"
+                    className="group relative p-5 sm:p-7 rounded-2xl bg-parchment-50 border border-ink/10 hover:border-gold hover:shadow-museum-hover transition-all duration-300 cursor-pointer overflow-hidden active:scale-[0.99] touch-manipulation"
                   >
-                    {/* Corner Archive Badge */}
-                    <div className="flex items-center justify-between mb-4">
+                    {/* Top Metadata Header: Year, Period & Archive Badge */}
+                    <div className="flex items-center justify-between mb-4 border-b border-ink/5 pb-3">
                       <div className="flex items-center gap-2">
                         <span className="px-2.5 py-0.5 rounded text-[10px] font-cinzel font-bold tracking-widest uppercase bg-parchment-200 text-terracotta border border-terracotta/20">
                           {item.archiveId}
@@ -96,16 +104,21 @@ export default function TimelineSection({ onSelectArtifact }) {
                         <span className="text-xs font-cinzel font-bold text-terracotta">
                           {item.year}
                         </span>
+                        <span className="text-[10px] uppercase font-sans text-ink-faint hidden xs:inline">
+                          • {item.period}
+                        </span>
                       </div>
 
                       <span className="flex items-center gap-1 text-[11px] uppercase tracking-wider font-sans text-ink-faint group-hover:text-terracotta transition-colors">
-                        <span>Examine Dossier</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span className="hidden sm:inline">Examine Dossier</span>
+                        <span className="sm:hidden text-[10px] font-cinzel font-semibold text-terracotta">EXPLORE →</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 hidden sm:inline transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </span>
                     </div>
 
-                    {/* Card Media Preview + Editorial Text */}
-                    <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center">
+                    {/* Desktop vs Mobile Content Hierarchy */}
+                    {/* On Desktop/Tablet (sm: and up): Preserves exact side-by-side grid */}
+                    <div className="hidden sm:grid sm:grid-cols-12 gap-5 items-center">
                       {/* Image Thumbnail Frame */}
                       <div className="sm:col-span-5 aspect-[4/3] rounded-xl overflow-hidden bg-parchment-200 border border-ink/10 relative shadow-sm">
                         <img
@@ -143,12 +156,58 @@ export default function TimelineSection({ onSelectArtifact }) {
                       </div>
                     </div>
 
+                    {/* On Mobile Phone (< sm:): Strict Stacked Vertical Hierarchy */}
+                    {/* YEAR -> ARTIFACT -> DESCRIPTION -> TAP TO EXPLORE */}
+                    <div className="sm:hidden flex flex-col space-y-3">
+                      {/* Artifact Title & Type */}
+                      <div>
+                        <span className="text-[10px] uppercase tracking-widest text-ink-faint font-sans block mb-1">
+                          {item.period} • {item.type}
+                        </span>
+                        <h3 className="font-playfair text-2xl font-bold text-ink-rich leading-snug">
+                          {item.title}
+                        </h3>
+                      </div>
+
+                      {/* Artwork Large Image Frame */}
+                      <div className="aspect-[4/3] w-full rounded-xl overflow-hidden bg-parchment-200 border border-ink/10 relative shadow-sm">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover object-center"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      {/* Description & Tags */}
+                      <p className="font-sans text-xs text-ink-muted leading-relaxed">
+                        {item.desc}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {item.tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className="px-2 py-0.5 rounded-full bg-parchment-200 text-[10px] font-sans text-ink-muted"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Bottom Mobile Action Prompt */}
+                      <div className="pt-3 border-t border-ink/5 flex items-center justify-between text-xs font-cinzel font-semibold text-terracotta">
+                        <span>TAP TO EXPLORE</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
+                    </div>
+
                     {/* Bottom Hover Glow Accent */}
                     <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-terracotta to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </div>
 
-                {/* Empty spacer for the alternating column on desktop */}
+                {/* Empty spacer for the alternating column on desktop (LOCKED) */}
                 <div className="hidden lg:block w-[calc(50%-40px)]" />
               </div>
             );
