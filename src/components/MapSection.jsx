@@ -34,7 +34,7 @@ export default function MapSection() {
     // Custom OpenStreetMap Parchment / Sepia Tile Layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
-      attribution: '© OpenStreetMap contributors | KALA Archive',
+      attribution: '© OpenStreetMap contributors | KRITI Archive',
     }).addTo(map);
 
     mapInstanceRef.current = map;

@@ -62,7 +62,7 @@ export default function Loader({ onFinished }) {
   return (
     <aside
       role="status"
-      aria-label="Loading KALA Indian Art Archive"
+      aria-label="Loading KRITI Indian Art Archive"
       className={`fixed inset-0 z-50 flex flex-col items-center justify-between bg-parchment-100 text-ink overflow-hidden select-none transition-all duration-300 ease-out ${
         isExiting
           ? 'opacity-0 scale-[1.03] pointer-events-none'
@@ -267,26 +267,26 @@ export default function Loader({ onFinished }) {
               showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
           >
-            कला
+            कृति
           </div>
 
-          {/* Main Title: KALA (0.3s – 0.8s) */}
+          {/* Main Title: KRITI (0.3s – 0.8s) */}
           <h1
             className={`font-cinzel text-5xl sm:text-7xl md:text-8xl font-black tracking-[0.16em] sm:tracking-[0.22em] text-ink-rich leading-none transition-all duration-500 ease-out select-none ${
               showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
-            style={{ textShadow: '0 2px 14px rgba(25, 21, 19, 0.1)' }}
+            style={{ textShadow: '0 2px 14px rgba(15, 23, 42, 0.1)' }}
           >
-            KALA
+            KRITI
           </h1>
 
-          {/* Subtitle: "A Living Journey Through Indian Art" (0.75s – 1.3s) */}
+          {/* Subtitle: "The Living Archive of Indian Masterpieces" (0.75s – 1.3s) */}
           <p
             className={`font-cormorant italic text-xl sm:text-3xl text-terracotta font-semibold tracking-wide mt-2.5 sm:mt-3 transition-all duration-500 ease-out ${
               showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
             }`}
           >
-            “A Living Journey Through Indian Art”
+            “The Living Archive of Indian Masterpieces”
           </p>
 
           {/* Description: Blur-to-sharp transition (1.2s – 1.8s) */}
@@ -295,7 +295,7 @@ export default function Loader({ onFinished }) {
               showDesc ? 'opacity-100 blur-0 translate-y-0' : 'opacity-0 blur-sm translate-y-2'
             }`}
           >
-            Explore the stories, traditions and visual languages that shaped India's artistic heritage.
+            Explore the masterpieces, sacred forms and visual languages that shaped India's artistic heritage.
           </p>
         </div>
       </div>

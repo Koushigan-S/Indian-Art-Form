@@ -42,7 +42,7 @@ export default function ClosingSection() {
           </div>
 
           <h3 className="font-cinzel text-3xl font-extrabold tracking-wider text-ink-rich">
-            KALA
+            KRITI
           </h3>
 
           <p className="font-sans text-xs text-ink-muted leading-relaxed max-w-xl">
@@ -72,9 +72,9 @@ export default function ClosingSection() {
       {/* Bottom Minimal Copyright Bar */}
       <div className="pt-8 border-t border-ink/10 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-sans text-ink-faint text-center md:text-left">
         <div className="flex items-center gap-2">
-          <span>KALA Archive</span>
+          <span>KRITI Archive</span>
           <span>•</span>
-          <span>Living Journey Through Indian Art</span>
+          <span>Masterpieces of Indian Art</span>
         </div>
         <div className="flex flex-col items-center gap-1 font-cinzel font-semibold text-ink-rich tracking-wider text-[11px] sm:text-xs">
           <div className="flex items-center gap-2">

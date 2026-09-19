@@ -20,7 +20,7 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const titleLetters = ['K', 'A', 'L', 'A'];
+  const titleLetters = ['K', 'R', 'I', 'T', 'I'];
 
   return (
     <section
@@ -97,7 +97,7 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-4xl my-auto py-6 sm:py-8 w-full">
         {/* Sanskrit Root Title */}
         <div className="text-[10px] sm:text-xs uppercase tracking-[0.3em] sm:tracking-[0.4em] font-cinzel text-terracotta mb-2 sm:mb-3 font-semibold px-2">
-          कला • Visual Heritage of the Subcontinent
+          कृति • Masterpieces & Sacred Forms of India
         </div>
 
         {/* Letter-by-letter reveal Title */}
@@ -119,10 +119,10 @@ export default function Hero() {
         {/* Subtitle */}
         <div className="mt-5 sm:mt-8 space-y-2 sm:space-y-3 px-2">
           <p className="font-cormorant italic text-xl sm:text-3xl md:text-4xl text-ink font-normal tracking-wide">
-            “A Living Journey Through Indian Art”
+            “The Living Archive of Indian Masterpieces”
           </p>
           <p className="font-sans text-[11px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] text-ink-muted max-w-lg mx-auto leading-relaxed">
-            From ancient bronze to living folk traditions.
+            From ancient bronzes to sacred temple forms and living tribal traditions.
           </p>
         </div>
 

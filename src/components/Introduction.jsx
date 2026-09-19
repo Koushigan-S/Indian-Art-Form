@@ -9,7 +9,7 @@ export default function Introduction() {
       subtitle: "Millennia of Continuous Evolution",
       description: "From Harappan lost-wax metallurgy in 2500 BCE to contemporary living folk practices, Indian art never froze into a fossilized canon. It absorbed, adapted, and synthesized with each era.",
       icon: Clock,
-      accent: "#C1522E"
+      accent: "#D95B1E"
     },
     {
       code: "02",
@@ -17,7 +17,7 @@ export default function Introduction() {
       subtitle: "The Soil of Regional Identity",
       description: "The basalt cliffs of Maharashtra, the granite riverbanks of Thanjavur, the fertile plains of Mithila, and the desert courts of Rajasthan all gave birth to radically distinct visual idioms.",
       icon: MapPin,
-      accent: "#C59E4E"
+      accent: "#D97706"
     },
     {
       code: "03",
@@ -25,7 +25,7 @@ export default function Introduction() {
       subtitle: "Living Heritage & Shared Memory",
       description: "Art was not confined to museum pedestals; it breathed through wedding chambers, harvest dances, temple rituals, and sacred manuscripts—passed through communal hands over centuries.",
       icon: Compass,
-      accent: "#1D253A"
+      accent: "#0F172A"
     }
   ];
 

@@ -56,15 +56,15 @@ export default function Navbar({ activeSection }) {
             className="flex items-center gap-3 group focus:outline-none"
             data-cursor="HOME"
           >
-            <div className="w-8 h-8 rounded-full border border-gold/60 flex items-center justify-center bg-parchment-50 group-hover:border-terracotta transition-colors">
-              <span className="font-cinzel text-xs font-bold text-terracotta">क</span>
+            <div className="w-8 h-8 rounded-full border border-gold/60 flex items-center justify-center bg-parchment-50 group-hover:border-terracotta transition-colors shadow-sm">
+              <span className="font-cinzel text-xs font-bold text-terracotta">कृ</span>
             </div>
             <div>
               <span className="font-cinzel font-extrabold text-xl tracking-[0.2em] text-ink-rich block leading-none">
-                KALA
+                KRITI
               </span>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-ink-faint font-sans block mt-1">
-                Indian Art Archive
+              <span className="text-[9px] uppercase tracking-[0.22em] text-ink-faint font-sans block mt-1">
+                Masterpieces of Indian Art
               </span>
             </div>
           </a>
@@ -153,7 +153,7 @@ export default function Navbar({ activeSection }) {
           {/* Top Brand & Close Bar */}
           <div className="flex items-center justify-between border-b border-ink/10 pb-4">
             <div className="flex items-center gap-2">
-              <span className="font-cinzel text-xl font-black tracking-widest text-ink-rich">KALA</span>
+              <span className="font-cinzel text-xl font-black tracking-widest text-ink-rich">KRITI</span>
               <span className="text-[10px] uppercase tracking-widest text-gold font-sans font-semibold">• Archive</span>
             </div>
             <button
@@ -202,7 +202,7 @@ export default function Navbar({ activeSection }) {
 
           {/* Bottom Attribution Footer */}
           <div className="pt-4 border-t border-ink/10 text-xs text-ink-muted flex flex-col space-y-1">
-            <p className="font-cormorant italic text-sm text-ink-soft">CLA-I • Indian Art History Archive</p>
+            <p className="font-cormorant italic text-sm text-ink-soft">CLA-I • KRITI Indian Art Archive</p>
             <div className="flex flex-col space-y-0.5 text-[11px] font-cinzel font-semibold tracking-wider">
               <span className="text-terracotta">Koushigan Srinivasan • RA2411003012117</span>
               <span className="text-ink-soft">Madan Suriya • RA2411003012108</span>
