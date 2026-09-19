@@ -10,7 +10,7 @@ export const mapLocations = [
     extendedDetails: "Carved into a horseshoe-shaped gorge along the Waghur River, these 30 rock-cut cave monuments house the highest achievements of ancient Indian mural painting and monastic sanctuary architecture.",
     keyMasterpiece: "Cave 1 Padmapani & Vajrapani Bodhisattva Murals",
     tags: ["Murals", "Buddhist", "Rock-Cut", "UNESCO"],
-    color: "#D95B1E"
+    color: "#15803D"
   },
   {
     id: "ellora",
@@ -23,7 +23,7 @@ export const mapLocations = [
     extendedDetails: "Featuring Cave 16 (The Kailasa Temple), the largest monolithic rock excavation in the world, carved vertically downwards from a single basalt cliff face with extraordinary precision.",
     keyMasterpiece: "Kailasa Temple (Cave 16) Monolithic Complex",
     tags: ["Monolithic", "Sculpture", "Multi-faith", "UNESCO"],
-    color: "#9A3412"
+    color: "#0F5132"
   },
   {
     id: "thanjavur",
@@ -36,7 +36,7 @@ export const mapLocations = [
     extendedDetails: "The imperial capital of the Cholas, home to the monumental Brihadisvara Temple with its 66-meter granite vimana and world-famous bronze ateliers that pioneered dynamic lost-wax casting.",
     keyMasterpiece: "Brihadisvara Temple & Nataraja Lost-Wax Bronzes",
     tags: ["Bronze", "Dravidian", "Temple", "Chola"],
-    color: "#D97706"
+    color: "#B5943B"
   },
   {
     id: "khajuraho",
@@ -49,7 +49,7 @@ export const mapLocations = [
     extendedDetails: "A celebration of sandstone Nagara architecture where temple plinths and exterior friezes represent the totality of existence—deities, celestial maidens (apsaras), court musicians, and sacred geometry.",
     keyMasterpiece: "Kandariya Mahadeva Temple Friezes",
     tags: ["Nagara", "Sandstone", "Sculptural Friezes", "UNESCO"],
-    color: "#D4963B"
+    color: "#84732C"
   },
   {
     id: "madhubani",
@@ -62,7 +62,7 @@ export const mapLocations = [
     extendedDetails: "Created traditionally by women on mud-plastered walls for weddings and harvest festivals, utilizing natural pigment extracts from flowers, indigo, soot, and cowdung.",
     keyMasterpiece: "Kohbar Ghar (Nuptial Chamber) Ritual Wall Paintings",
     tags: ["Folk", "Natural Pigments", "Matrilineal", "Symbolic"],
-    color: "#E11D48"
+    color: "#10B981"
   },
   {
     id: "warli",
@@ -75,7 +75,7 @@ export const mapLocations = [
     extendedDetails: "Rooted in the northern Sahyadri foothills, Warli tribal art eschews religious mythological deities in favor of animistic communion with nature, wildlife, harvest rituals, and communal circular dances.",
     keyMasterpiece: "Tarpa Folk Dance Spirals & Mother Earth (Palaghata)",
     tags: ["Tribal", "Geometric", "Minimalism", "Community"],
-    color: "#D95B1E"
+    color: "#15803D"
   },
   {
     id: "puri",
@@ -101,6 +101,6 @@ export const mapLocations = [
     extendedDetails: "Known for the Dhundhar and Jaipur school of miniature art, characterized by lyrical depictions of Radha-Krishna romance (Ragamala series), equestrian royal portraits, and vibrant vermilion-lapis pigments.",
     keyMasterpiece: "Ragamala Miniature Folios & City Palace Murals",
     tags: ["Miniature", "Court Art", "Ragamala", "Gold Leaf"],
-    color: "#D97706"
+    color: "#B5943B"
   }
 ];

@@ -12,7 +12,7 @@ Created by **Koushigan Srinivasan** (`RA2411003012117`), **Madan Suriya** (`RA24
 **KRITI** (कृति) is an award-winning, editorial-grade interactive museum web experience that combines three core Indian Art History activities into one continuous narrative:
 
 1. **Interactive Indian Art Timeline (CO1)**: Chronological journey spanning six foundational visual milestones from the Indus Valley Civilization (c. 2500 BCE) to contemporary Warli tribal traditions. Features deep archival modal dossiers with historical context, structural features, and vector schema inspection.
-2. **Interactive Indian Art Map (CO1)**: A cartographic exploration across eight historic centers of visual heritage powered by Leaflet and OpenStreetMap, styled with custom saffron and gold pulse markers and a floating editorial drawer.
+2. **Interactive Indian Art Map (CO1)**: A cartographic exploration across eight historic centers of visual heritage powered by Leaflet and OpenStreetMap, styled with custom emerald and olive gold pulse markers and a floating editorial drawer.
 3. **Regional Painting Fusion (CO2)**: An exhibition centerpiece titled *"WARLI × KALAMKARI: When geometry meets ornament"*, featuring interactive hotspots, comparative aesthetic anatomy, and a curatorial synthesis essay on the coexistence of geometric minimalism and organic ornamentation.
 4. **Cultural Connections Matrix**: Cross-cutting concept network exploring universal themes of *Storytelling, Nature & Ecology, Community & Ritual,* and *Sacred Movement*.
 
@@ -20,7 +20,7 @@ Created by **Koushigan Srinivasan** (`RA2411003012117`), **Madan Suriya** (`RA24
 
 ## 🎨 Visual Identity & Curatorial Aesthetic
 
-- **Color Palette**: High-contrast Opal Ivory (`#FAF8F2`), Midnight Slate & Soot (`#0F172A`), Radiant Imperial Saffron (`#D95B1E`), Luminous Temple Gold (`#D97706`), and Royal Peacock & Crimson accents.
+- **Color Palette**: High-contrast Celadon Pearl (`#F4F8F5`), Deep Obsidian Forest Slate (`#0B1E16`), Imperial Emerald & Jade (`#15803D`), Gilded Olive Brass (`#B5943B`), and vibrant mint & malachite accents.
 - **Typography**: Editorial serif hierarchy (`Cinzel`, `Playfair Display`, `Cormorant Garamond`) paired with modern geometric body type (`Plus Jakarta Sans`).
 - **Atmosphere**: Subtle SVG noise texture, linen grid weave, ornamental corner accents, and a synthesized ambient acoustic drone powered by the Web Audio API.
 

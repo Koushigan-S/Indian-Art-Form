@@ -153,12 +153,12 @@ export default function FusionSection() {
           {/* Top Right "Done by" Badge */}
           <div className="absolute top-4 right-4 z-10 px-3.5 py-1.5 rounded-lg bg-parchment-50/95 backdrop-blur-md border border-gold/40 text-terracotta text-[11px] sm:text-xs font-cinzel font-bold tracking-wider shadow-sm hidden xs:flex items-center gap-1.5">
             <span className="text-ink-muted font-sans font-normal text-[10px]">Done by:</span>
-            <span>Koushigan Srinivasan</span>
+            <span>Koushigan & Team (4)</span>
           </div>
         </div>
 
         {/* Archival Attestation & Caption Dossier */}
-        <div className="p-5 sm:p-7 bg-parchment-50 border-t border-gold/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-5 sm:p-7 bg-parchment-50 border-t border-gold/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-1 max-w-2xl">
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded bg-terracotta text-parchment-50 font-cinzel text-[10px] font-bold tracking-widest uppercase">
@@ -177,16 +177,44 @@ export default function FusionSection() {
           </div>
 
           <div className="shrink-0 w-full sm:w-auto">
-            <div className="px-5 py-3 rounded-2xl bg-parchment-200/80 border border-gold/40 flex flex-col sm:items-end shadow-sm">
-              <span className="text-[10px] uppercase tracking-[0.25em] font-cinzel text-ink-faint font-semibold">
+            <div className="px-5 py-3.5 rounded-2xl bg-parchment-200/80 border border-gold/40 flex flex-col sm:items-end shadow-sm">
+              <span className="text-[10px] uppercase tracking-[0.25em] font-cinzel text-ink-faint font-semibold mb-1.5">
                 Done by
               </span>
-              <span className="font-cinzel text-base font-bold text-terracotta tracking-wider">
-                Koushigan Srinivasan
-              </span>
-              <span className="text-xs font-mono font-semibold text-ink-rich">
-                RA2411003012117
-              </span>
+              <div className="flex flex-col sm:items-end space-y-1 w-full">
+                <div className="flex items-center justify-between sm:justify-end gap-3 text-right">
+                  <span className="font-cinzel text-xs sm:text-sm font-bold text-terracotta tracking-wider">
+                    Koushigan Srinivasan
+                  </span>
+                  <span className="text-[11px] font-mono font-semibold text-ink-rich">
+                    RA2411003012117
+                  </span>
+                </div>
+                <div className="flex items-center justify-between sm:justify-end gap-3 text-right">
+                  <span className="font-cinzel text-xs sm:text-sm font-bold text-terracotta tracking-wider">
+                    Madan Suriya
+                  </span>
+                  <span className="text-[11px] font-mono font-semibold text-ink-rich">
+                    RA2411003012108
+                  </span>
+                </div>
+                <div className="flex items-center justify-between sm:justify-end gap-3 text-right">
+                  <span className="font-cinzel text-xs sm:text-sm font-bold text-terracotta tracking-wider">
+                    Sreedharan V A
+                  </span>
+                  <span className="text-[11px] font-mono font-semibold text-ink-rich">
+                    RA2411003012116
+                  </span>
+                </div>
+                <div className="flex items-center justify-between sm:justify-end gap-3 text-right">
+                  <span className="font-cinzel text-xs sm:text-sm font-bold text-terracotta tracking-wider">
+                    Karthick T
+                  </span>
+                  <span className="text-[11px] font-mono font-semibold text-ink-rich">
+                    RA2411003012145
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

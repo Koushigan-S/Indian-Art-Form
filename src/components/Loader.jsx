@@ -104,41 +104,41 @@ export default function Loader({ onFinished }) {
             }}
           >
             <defs>
-              {/* Kerala Onam Floral Gradients */}
+              {/* Kerala Onam Sacred Flora Gradients (Shades of Green & Olive Gold) */}
               <linearGradient id="marigoldOrange" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FFB300" />
-                <stop offset="100%" stopColor="#E65100" />
+                <stop offset="0%" stopColor="#34D399" />
+                <stop offset="100%" stopColor="#059669" />
               </linearGradient>
 
               <linearGradient id="chethiRed" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FF5252" />
-                <stop offset="100%" stopColor="#B71C1C" />
+                <stop offset="0%" stopColor="#10B981" />
+                <stop offset="100%" stopColor="#047857" />
               </linearGradient>
 
               <linearGradient id="jamanthiYellow" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FFF59D" />
-                <stop offset="100%" stopColor="#FBC02D" />
+                <stop offset="0%" stopColor="#A7F3D0" />
+                <stop offset="100%" stopColor="#10B981" />
               </linearGradient>
 
               <linearGradient id="leafGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#66BB6A" />
-                <stop offset="100%" stopColor="#1B5E20" />
+                <stop offset="0%" stopColor="#6EE7B7" />
+                <stop offset="100%" stopColor="#065F46" />
               </linearGradient>
 
               <linearGradient id="shankhuViolet" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#7E57C2" />
-                <stop offset="100%" stopColor="#311B92" />
+                <stop offset="0%" stopColor="#0D9488" />
+                <stop offset="100%" stopColor="#042F2E" />
               </linearGradient>
 
               <linearGradient id="chemparathyPink" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#EC407A" />
-                <stop offset="100%" stopColor="#880E4F" />
+                <stop offset="0%" stopColor="#14B8A6" />
+                <stop offset="100%" stopColor="#0F766E" />
               </linearGradient>
 
               <radialGradient id="centerSunGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#FFF176" />
-                <stop offset="60%" stopColor="#FB8C00" />
-                <stop offset="100%" stopColor="#D84315" />
+                <stop offset="0%" stopColor="#D1FAE5" />
+                <stop offset="60%" stopColor="#10B981" />
+                <stop offset="100%" stopColor="#064E3B" />
               </radialGradient>
             </defs>
 
