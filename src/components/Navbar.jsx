@@ -203,9 +203,12 @@ export default function Navbar({ activeSection }) {
           {/* Bottom Attribution Footer */}
           <div className="pt-4 border-t border-ink/10 text-xs text-ink-muted flex flex-col space-y-1">
             <p className="font-cormorant italic text-sm text-ink-soft">CLA-I • Indian Art History Archive</p>
-            <p className="text-[11px] text-terracotta font-cinzel font-semibold tracking-wider">
-              Koushigan Srinivasan • RA2411003012117
-            </p>
+            <div className="flex flex-col space-y-0.5 text-[11px] font-cinzel font-semibold tracking-wider">
+              <span className="text-terracotta">Koushigan Srinivasan • RA2411003012117</span>
+              <span className="text-ink-soft">Madan Suriya • RA2411003012108</span>
+              <span className="text-ink-soft">Sreedharan V A • RA2411003012116</span>
+              <span className="text-ink-soft">Karthick T • RA2411003012145</span>
+            </div>
           </div>
         </div>
       )}

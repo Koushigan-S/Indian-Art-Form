@@ -320,16 +320,31 @@ export default function Loader({ onFinished }) {
           </div>
         </div>
 
-        {/* Bottom Student Attribution Credit (EXACTLY SINGLE LINE) */}
+        {/* Bottom Student Attribution Credits */}
         <div
-          className={`transition-all duration-500 ease-out pt-0.5 sm:pt-1 w-full flex items-center justify-center ${
+          className={`transition-all duration-500 ease-out pt-0.5 sm:pt-1 w-full flex flex-col items-center justify-center space-y-1 ${
             showCredits ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
           }`}
         >
-          <p className="font-cinzel text-[11px] sm:text-sm tracking-[0.12em] sm:tracking-[0.18em] font-semibold text-ink-soft whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center">
+          <p className="font-cinzel text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.14em] font-semibold text-ink-soft whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center">
             <span className="text-terracotta font-bold">Koushigan Srinivasan</span>
-            <span className="text-gold mx-1.5 sm:mx-3">•</span>
+            <span className="text-gold mx-1.5 sm:mx-2">•</span>
             <span className="text-ink-rich font-bold">RA2411003012117</span>
+          </p>
+          <p className="font-cinzel text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.14em] font-semibold text-ink-soft whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center">
+            <span className="text-terracotta font-bold">Madan Suriya</span>
+            <span className="text-gold mx-1.5 sm:mx-2">•</span>
+            <span className="text-ink-rich font-bold">RA2411003012108</span>
+          </p>
+          <p className="font-cinzel text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.14em] font-semibold text-ink-soft whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center">
+            <span className="text-terracotta font-bold">Sreedharan V A</span>
+            <span className="text-gold mx-1.5 sm:mx-2">•</span>
+            <span className="text-ink-rich font-bold">RA2411003012116</span>
+          </p>
+          <p className="font-cinzel text-[10px] sm:text-xs tracking-[0.1em] sm:tracking-[0.14em] font-semibold text-ink-soft whitespace-nowrap overflow-hidden text-ellipsis flex items-center justify-center">
+            <span className="text-terracotta font-bold">Karthick T</span>
+            <span className="text-gold mx-1.5 sm:mx-2">•</span>
+            <span className="text-ink-rich font-bold">RA2411003012145</span>
           </p>
         </div>
       </div>

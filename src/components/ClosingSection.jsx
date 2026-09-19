@@ -70,16 +70,33 @@ export default function ClosingSection() {
       </div>
 
       {/* Bottom Minimal Copyright Bar */}
-      <div className="pt-8 border-t border-ink/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-sans text-ink-faint text-center md:text-left">
+      <div className="pt-8 border-t border-ink/10 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-sans text-ink-faint text-center md:text-left">
         <div className="flex items-center gap-2">
           <span>KALA Archive</span>
           <span>•</span>
           <span>Living Journey Through Indian Art</span>
         </div>
-        <div className="flex items-center gap-2 font-cinzel font-semibold text-ink-rich tracking-wider text-[11px] sm:text-xs">
-          <span className="text-terracotta">Koushigan Srinivasan</span>
-          <span className="text-gold">•</span>
-          <span>RA2411003012117</span>
+        <div className="flex flex-col items-center gap-1 font-cinzel font-semibold text-ink-rich tracking-wider text-[11px] sm:text-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-terracotta">Koushigan Srinivasan</span>
+            <span className="text-gold">•</span>
+            <span>RA2411003012117</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-terracotta">Madan Suriya</span>
+            <span className="text-gold">•</span>
+            <span>RA2411003012108</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-terracotta">Sreedharan V A</span>
+            <span className="text-gold">•</span>
+            <span>RA2411003012116</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-terracotta">Karthick T</span>
+            <span className="text-gold">•</span>
+            <span>RA2411003012145</span>
+          </div>
         </div>
         <div>
           <span>Preserving Cultural Memory • 2500 BCE to Present</span>
